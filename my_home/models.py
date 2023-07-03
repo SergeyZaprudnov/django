@@ -6,7 +6,7 @@ class Product(models.Model):
     description = models.TextField(blank=True, null=True)
     image = models.ImageField('media/image/')
     category = models.CharField(max_length=30)
-    purchase_price = models.ImageField(blank=False, null=False)
+    purchase_price = models.IntegerField(blank=False, null=False)
     date_of_creation = models.DateField(auto_now_add=True)
     last_modified_date = models.DateField(auto_now=True)
 
