@@ -4,14 +4,20 @@ from my_home.models import Product
 
 
 def index(request):
-    return render(request, 'index.html')
+    context = {
+        'title': 'Главная'
+    }
+    return render(request, 'index.html', context)
 
 
 def contacts(request):
+    context = {
+        'title': 'Контакты'
+    }
     if request.method == 'POST':
         name = request.POST.get('name')
         print(name)
-    return render(request, 'contacts.html')
+    return render(request, 'contacts.html', context)
 
 
 def product(request):
