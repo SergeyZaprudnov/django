@@ -1,0 +1,67 @@
+[
+  {
+    "model": "my_home.product",
+    "pk": 1,
+    "fields": {
+      "name": "Peach",
+      "description": "Персик",
+      "image": "image/Peach.jpg",
+      "category": "Fruits",
+      "purchase_price": "140",
+      "date_of_creation": "2023-07-03",
+      "last_modified_date": "2023-07-03"
+    }
+  },
+  {
+    "model": "my_home.product",
+    "pk": 2,
+    "fields": {
+      "name": "Cherries",
+      "description": "Черешня",
+      "image": "image/Cherries.jpg",
+      "category": "Berry",
+      "purchase_price": "250",
+      "date_of_creation": "2023-07-03",
+      "last_modified_date": "2023-07-03"
+    }
+  },
+  {
+    "model": "my_home.product",
+    "pk": 3,
+    "fields": {
+      "name": "Watermelon",
+      "description": "Арбуз",
+      "image": "image/Watermelon.jpg",
+      "category": "Fetus",
+      "purchase_price": "29",
+      "date_of_creation": "2023-07-03",
+      "last_modified_date": "2023-07-03"
+    }
+  },
+  {
+    "model": "my_home.product",
+    "pk": 4,
+    "fields": {
+      "name": "Melon",
+      "description": "Дыня",
+      "image": "image/Melon.jpg",
+      "category": "Fetus",
+      "purchase_price": "37",
+      "date_of_creation": "2023-07-03",
+      "last_modified_date": "2023-07-03"
+    }
+  },
+  {
+    "model": "my_home.product",
+    "pk": 5,
+    "fields": {
+      "name": "Apples",
+      "description": "Яблоки",
+      "image": "image/Apples.jpg",
+      "category": "Fruits",
+      "purchase_price": "109",
+      "date_of_creation": "2023-07-03",
+      "last_modified_date": "2023-07-03"
+    }
+  }
+]
