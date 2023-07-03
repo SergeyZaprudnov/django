@@ -11,12 +11,16 @@ def index(request):
 
 
 def contacts(request):
+
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    subjects = request.POST.get('subjects')
+    message = request.POST.get('message')
+    print(f'"Имя" {name}\n"Емэйл" {email}\n"Тема сообщения" {subjects}\n"Сообщение" {message}')
+
     context = {
         'title': 'Контакты'
     }
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        print(name)
     return render(request, 'contacts.html', context)
 
 
