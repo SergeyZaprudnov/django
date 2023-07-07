@@ -17,8 +17,10 @@ Including another URLconf
 
 from django.urls import path
 from my_blog.apps import MyBlogConfig
+from my_blog.views import BlogCreateView
+
 app_name = MyBlogConfig.name
 
 urlpatterns = [
-    path('', index, name='index'),
+    path('create/', BlogCreateView.as_view(), name='create'),
 ]
