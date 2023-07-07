@@ -17,10 +17,14 @@ Including another URLconf
 
 from django.urls import path
 from my_blog.apps import MyBlogConfig
-from my_blog.views import BlogCreateView
+from my_blog.views import BlogCreateView, BlogListView, BlogLDetailView, BlogUpdateView, BlogDeleteView
 
 app_name = MyBlogConfig.name
 
 urlpatterns = [
     path('create/', BlogCreateView.as_view(), name='create'),
+    path('', BlogListView.as_view(), name='list'),
+    path('view/<int:pk>/', BlogLDetailView.as_view(), name='view'),
+    path('edit/<int:pk>/', BlogUpdateView.as_view(), name='edit'),
+    path('delete/<int:pk>/', BlogDeleteView.as_view(), name='delete'),
 ]
