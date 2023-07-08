@@ -17,13 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from my_home.apps import MyHomeConfig
-from my_home.views import index, contacts, product
+from my_home.views import contacts, ProductListView, IndexListView
 
 app_name = MyHomeConfig.name
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index, name='index'),
-    path('product/', product, name='product'),
+    path('', IndexListView.as_view(), name='view'),
+    path('list', ProductListView.as_view(), name='list'),
     path('contacts', contacts, name='contacts'),
 ]

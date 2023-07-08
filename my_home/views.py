@@ -1,13 +1,14 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 
-from my_home.models import Product
+from my_home.models import Product, Category
 
 
-def index(request):
-    context = {
+class IndexListView(ListView):
+    model = Category
+    extra_context = {
         'title': 'Главная'
     }
-    return render(request, 'index.html', context)
 
 
 def contacts(request):
@@ -24,10 +25,10 @@ def contacts(request):
     return render(request, 'contacts.html', context)
 
 
-def product(request):
-    products_for_all = Product.objects.all()
-    context = {
-        'title': 'Продукты',
-        'object_list': products_for_all
+class ProductListView(ListView):
+    model = Product
+    extra_context = {
+        'title': 'Продукты'
     }
-    return render(request, 'product.html', context)
+
+
