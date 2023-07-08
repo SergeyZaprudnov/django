@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView
 
-from my_home.models import Product, Category
+from my_home.models import Product, Category, Contacts
 
 
 class IndexListView(ListView):
@@ -11,18 +12,18 @@ class IndexListView(ListView):
     }
 
 
-def contacts(request):
-
-    name = request.POST.get('name')
-    email = request.POST.get('email')
-    subjects = request.POST.get('subjects')
-    message = request.POST.get('message')
-    print(f'"Имя" {name}\n"Емэйл" {email}\n"Тема сообщения" {subjects}\n"Сообщение" {message}')
-
-    context = {
+class ContactCreateView(CreateView):
+    model = Contacts
+    success_url = reverse_lazy('my_home:list')
+    fields = ('name', 'email', 'message')
+    extra_context = {
         'title': 'Контакты'
     }
-    return render(request, 'contacts.html', context)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data["title"] = "Наши контакты"
+        return context_data
 
 
 class ProductListView(ListView):
@@ -30,5 +31,3 @@ class ProductListView(ListView):
     extra_context = {
         'title': 'Продукты'
     }
-
-

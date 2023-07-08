@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from my_home.apps import MyHomeConfig
-from my_home.views import contacts, ProductListView, IndexListView
+from my_home.views import ProductListView, IndexListView, ContactCreateView
 
 app_name = MyHomeConfig.name
 
@@ -25,5 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexListView.as_view(), name='view'),
     path('list', ProductListView.as_view(), name='list'),
-    path('contacts', contacts, name='contacts'),
+    path('contact', ContactCreateView.as_view(), name='contact'),
 ]
