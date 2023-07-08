@@ -30,3 +30,16 @@ class Category(models.Model):
         verbose_name = "Category"
         verbose_name_plural = "Categories"
         ordering = ('name',)
+
+
+class Contacts(models.Model):
+    name = models.CharField(max_length=100, verbose_name="user_name")
+    email = models.CharField(max_length=100, verbose_name="user_email")
+    message = models.CharField(max_length=100, verbose_name="user_message")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Contact"
+        verbose_name_plural = "Contacts"
