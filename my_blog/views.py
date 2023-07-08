@@ -10,6 +10,9 @@ class BlogCreateView(CreateView):
     model = Blog
     fields = ('name', 'description',)
     success_url = reverse_lazy('my_blog:list')
+    extra_context = {
+        'title': 'Добавить Блог'
+    }
 
     def form_valid(self, form):
         if form.is_valid():
@@ -23,6 +26,9 @@ class BlogCreateView(CreateView):
 class BlogUpdateView(UpdateView):
     model = Blog
     fields = ('name', 'description',)
+    extra_context = {
+        'title': 'Редактирование Блога'
+    }
 
 
     def form_valid(self, form):
@@ -39,6 +45,9 @@ class BlogUpdateView(UpdateView):
 
 class BlogListView(ListView):
     model = Blog
+    extra_context = {
+        'title': 'Блог'
+    }
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
@@ -48,6 +57,9 @@ class BlogListView(ListView):
 
 class BlogLDetailView(DetailView):
     model = Blog
+    extra_context = {
+        'title': 'Просмотр Блога'
+    }
 
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
@@ -56,6 +68,10 @@ class BlogLDetailView(DetailView):
         return self.object
 
 
+
 class BlogDeleteView(DeleteView):
     model = Blog
     success_url = reverse_lazy('my_blog:list')
+    extra_context = {
+        'title': 'Удаление Блога'
+    }
