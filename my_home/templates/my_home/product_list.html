@@ -9,21 +9,26 @@
                     <p class="card-text">{{ object }}</p>
 
                     {% for pr in object.version_set.all %}
-                    {% if pr.is_active %}
-                        <p class="text">Версия: {{ pr.version }}</p>
+                        {% if pr.is_active %}
+                            <p class="text">Версия: {{ pr.version }}</p>
 
-                    {% endif %}
-                {% endfor %}
+                        {% endif %}
+                    {% endfor %}
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            <a href="{% url 'my_home:product_detail' object.pk %}" type="button" class="btn btn-sm btn-outline-secondary">Смотреть</a>
-                        <a href="{% url 'my_home:product_update' object.pk %}" type="button" class="btn btn-sm btn-outline-secondary">Редактировать</a>
-                        <a href="{% url 'my_home:product_delete' object.pk %}" type="button" class="btn btn-sm btn-outline-secondary">Удалить</a>
+                            <a href="{% url 'my_home:product_detail' object.pk %}" type="button"
+                               class="btn btn-sm btn-outline-secondary">Смотреть</a>
+                            <a href="{% url 'my_home:product_update' object.pk %}" type="button"
+                               class="btn btn-sm btn-outline-secondary">Редактировать</a>
+                            <a href="{% url 'my_home:product_delete' object.pk %}" type="button"
+                               class="btn btn-sm btn-outline-secondary">Удалить</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     {% endfor %}
-
+    <div class="col-12">
+        <a href="{% url 'my_home:product_create' %}" class="btn btn-success">Добавить продукт</a>
+    </div>
 {% endblock %}
