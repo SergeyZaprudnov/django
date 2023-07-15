@@ -1,0 +1,30 @@
+{% extends 'my_home/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="col-12 blog-main">
+        <form class="row" method="post" enctype="multipart/form-data">
+            <div class="col-6">
+                <div class="card-header">
+                    <h3>Изменить продукт</h3>
+                </div>
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-success"
+                       value="{% if object %}Сохранить{% else %}Изменить{% endif %}">
+            </div>
+            <div class="col-6">
+                <div class="card-header">
+                    <h3>Версии продукта</h3>
+                </div>
+                {{ formset.management_form }}
+                {% for form in formset.forms %}
+                   {{ form.as_p }}
+                    <br>
+                    ****************************************************
+                {% endfor %}
+            </div>
+        </form>
+    </div>
+{% endblock %}

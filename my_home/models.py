@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Product(models.Model):
@@ -9,6 +10,9 @@ class Product(models.Model):
     purchase_price = models.IntegerField(blank=False, null=False)
     date_of_creation = models.DateField(auto_now_add=True)
     last_modified_date = models.DateField(auto_now=True)
+
+    def get_absolute_url(self):
+        return reverse('main:product', args=[self.pk])
 
     def __str__(self):
         return f'{self.description}, {self.purchase_price}'

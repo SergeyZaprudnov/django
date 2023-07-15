@@ -1,0 +1,22 @@
+{% extends 'my_home/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-md-8 blog-main">
+    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            Вы уверены, что хотите удалить продукт "{{ object.description }}"?
+
+            <input type="submit" class="btn btn-success" value="Уверены?">
+        </form>
+    </div>
+    <div class="card-footer">
+        <a href="{% url 'my_home:product' %}" class="btn btn-primary"> Назад </a>
+    </div>
+
+
+</div><!-- /.blog-main -->
+
+{% endblock %}

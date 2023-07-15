@@ -17,13 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from my_home.apps import MyHomeConfig
-from my_home.views import ProductListView, IndexListView, ContactCreateView
+from my_home.views import ProductListView, IndexListView, ContactCreateView, ProductDetailView, ProductCreateView, \
+    ProductUpdateView, ProductDeleteView
 
 app_name = MyHomeConfig.name
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexListView.as_view(), name='view'),
-    path('list', ProductListView.as_view(), name='list'),
+    path('product/', ProductListView.as_view(), name='product'),
+    path('product/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
+    path('product/create/', ProductCreateView.as_view(), name='product_create'),
+    path('product/update/<int:pk>/', ProductUpdateView.as_view(), name='product_update'),
+    path('product/delete/<int:pk>/', ProductDeleteView.as_view(), name='product_delete'),
     path('contact', ContactCreateView.as_view(), name='contact'),
 ]
