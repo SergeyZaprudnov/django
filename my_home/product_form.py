@@ -29,3 +29,13 @@ class ProductForm(FormStyleMixin, ModelForm):
             if cleaned_description in stop_words:
                 raise ValidationError('Вы используете запрещенные слова')
             return cleaned_description
+
+class VersionProduct(BaseInlineFormSet):
+    def clean(self):
+        super().clean()
+        count = 0
+        for form.cleaned_data.get('is_active') is True:
+            count += 1
+
+        if count > 1:
+            raise ValidationError('Вы имеете больше одной версии')
