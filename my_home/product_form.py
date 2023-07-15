@@ -30,12 +30,14 @@ class ProductForm(FormStyleMixin, ModelForm):
                 raise ValidationError('Вы используете запрещенные слова')
             return cleaned_description
 
+
 class VersionProduct(BaseInlineFormSet):
     def clean(self):
         super().clean()
         count = 0
-        for form.cleaned_data.get('is_active') is True:
-            count += 1
+        for form in self.forms:
+            if form.cleaned_data.get('is_active') is True:
+                count += 1
 
         if count > 1:
             raise ValidationError('Вы имеете больше одной версии')
